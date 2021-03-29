@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+    <t t-extend="AppsMenu">
+        <t t-jquery="div.dropdown-menu" t-operation="replace">
+            <div class="dropdown-menu" role="menu">
+                <t t-foreach="widget.getApps()" t-as="app">
+                    <a role="menuitem"
+                        class="dropdown-item o_app"
+                        t-att-data-menu-id="app.menuID"
+                        t-att-data-menu-xmlid="app.xmlID"
+                        t-att-data-action-id="app.actionID">
+                        <img class="o_app_icon" t-att-src="app.web_icon_data" t-att-alt="app.name"/>
+                        <div class="o_app_name"><t t-esc="app.name"/></div>
+                    </a>
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="Menu">
+        <t t-jquery=".o_menu_systray" t-operation="after">
+            <button class="small_device_menu_toggle d-block d-md-none d-lg-none" data-toggle="collapse" data-target=".o_main_navbar > .o_menu_sections">
+                <i class="fa fa-bars"/>
+            </button>
+        </t>
+    </t>
+    
+    <t t-name="odoo_shoppe_backend_theme.small_device_menu_href">
+        <t t-set="count" t-value="(count || 0) + 1"/>
+        <t t-if="!menu.children.length">
+            <li class="small_device_menu_one">
+                <a role="menuitem" t-attf-class="dropdown-item o_menu_entry_level_#{count}"
+                    t-attf-href="#menu_id=#{menu.id}&amp;action=#{menu.action ? menu.action.split(',')[1] : ''}"
+                    t-att-data-action-model="menu.action ? menu.action.split(',')[0] : ''"
+                    t-att-data-action-id="menu.action ? menu.action.split(',')[1] : ''"
+                    t-att-data-menu="menu.id" 
+                    t-att-data-menu-xmlid="menu.xmlid"
+                    data-toggle="collapse" data-target="#o_navbar_collapse.in">
+                    <span>
+                        <t t-esc="menu.name"/>
+                    </span>
+                </a>
+            </li>
+        </t>
+        <t t-else="">
+            <li class="small_device_menu">
+                <a role="button" href="#" t-attf-class="dropdown-toggle o-no-caret o_menu_header_level_#{count}"
+                        t-att-data-menu-xmlid="menu.xmlid" data-toggle="dropdown" aria-expanded="true">
+                    <span>
+                        <t t-esc="menu.name"/>
+                    </span>
+                    <span class="fa fa-chevron-right float-right"/>
+                </a>
+                <ul class="dropdown-menu show" role="menu">
+                    <t t-foreach="menu.children" t-as="submenu">
+                        <t t-call="odoo_shoppe_backend_theme.small_device_menu_href">
+                            <t t-set="menu" t-value="submenu"/>
+                        </t>
+                    </t>
+                </ul>
+            </li>
+        </t>
+    </t>
+    
+    <t t-name="odoo_shoppe_backend_theme.small_device_menu">
+        <t t-set="isMobile" t-value="true"/>
+        <t t-foreach="menu_data.children" t-as="topmenu">
+            <section t-att-class="topmenu.id">
+                <t t-if="topmenu.children.length">
+                    <t t-foreach="topmenu.children" t-as="submenu">
+                        <t t-call="odoo_shoppe_backend_theme.small_device_menu_href">
+                            <t t-set="menu" t-value="submenu"/>
+                        </t>
+                    </t>
+                </t>
+            </section>
+        </t>
+    </t>
+</templates>

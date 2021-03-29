@@ -1,0 +1,5 @@
+Date: 03 Dec 2019
+version: 1.1
+-----------------
+1. RTL support (fix rtl issue)
+2. Uninstall module auto reset web default template (inherit base template instead of override web template)

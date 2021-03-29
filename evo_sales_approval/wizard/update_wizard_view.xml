@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="wiz_update_approval_line_form" model="ir.ui.view">
+            <field name="name">update.approval.wizard.form</field>
+            <field name="model">update.approval.lines</field>
+            <field name="arch" type="xml">
+                <form string="Approve Sale">
+                    <group>
+                        <field name="sale_order_id" invisible="1"/>
+                        <field name="approve_check" invisible="1"/>
+                        <field name="reject_check" invisible="1"/>
+                        <field name="approved_date" invisible="1"/>
+                        <field name="note" invisible="0"/>
+                    </group>
+                    <footer>
+                        <button name="update_bom_approval_line" string="Approve" type="object" class="btn-primary"
+                                attrs="{'invisible': [('approve_check', '=', False)]}"/>
+                        <button name="update_bom_approval_line_reject" string="Reject" type="object" class="btn-primary"
+                                attrs="{'invisible': [('reject_check', '=', False)]}"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+            
+            <record model="ir.ui.view" id="employee_item_tree_view">
+                <field name="name">employee.item.tree</field>
+                <field name="model">employee.item</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Employee Checklist Details">
+                        <field name="employee_id"/>
+		                <field name="job_id"/>
+		                <field name="date"/>
+		                <field name="state"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="employee_item_form_view">
+                <field name="name">employee.item.form</field>
+                <field name="model">employee.item</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Employee Checklist Details">
+                		<header>
+		                    <button string="Check In" name="check_in" states="draft" type="object" class="oe_highlight"/>
+		                    <button string="Check Out" name="check_out" states="checkin" type="object" class="oe_highlight"/>
+		                    <field name="state" widget="statusbar" statusbar_visible="draft,checkin,checkout" />
+                		</header>
+                		
+                    	<sheet> 
+                    		<group>
+	                    		<group>
+	                        		<field name="employee_id"/>
+		                            <field name="job_id"/>
+		                        </group>
+		                        <group>
+		                            <field name="date"/>
+		                            <field name="department_id"/>
+		                        </group>
+		                    </group>  
+		                    <notebook>
+		                    <page string="Employee Items">
+		                   
+                                <field name="item_line_ids">
+                                    <form string="Checklist Lines">
+                                         <group>
+                                            <field name="product_id"/>
+                                            <field name="asset_id"/>
+                                            <field name="quantity"/>
+                                            <field name="checklist"/>
+                                        </group>
+                                    </form>
+                                    <tree string="Checklist Lines" editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="asset_id"/>
+                                        <field name="quantity"/>
+                                        <field name="checklist"/>
+                                    </tree>
+                                </field>
+                            </page>    
+                           
+                            </notebook>
+                    	</sheet>
+                    	
+                    </form>
+                </field>
+            </record>
+            
+            <record id="view_employee_item_filter" model="ir.ui.view">
+            <field name="name">employee.item.list.select</field>
+            <field name="model">employee.item</field>
+            <field name="arch" type="xml">
+                <search string="Employee Check In / Out">
+                    <field name="employee_id"/>
+		            <field name="job_id"/>
+                    <field name="department_id"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                        <filter string="Month"  name="Month" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Department"  name="Department" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter string="Job"  name="Job" domain="[]" context="{'group_by':'job_id'}"/>
+                        <filter string="Status"  name="Status" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+            
+            <record model="ir.actions.act_window" id="action_employee_checklist">
+                <field name="name">Employee Checklist Details</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">employee.item</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="employee_item_tree_view"/>
+            </record>
+            
+            <!-- Sub menu item -->
+            
+            <menuitem id="menu_employee_checklist" name="Check In / Out" parent="hr.menu_hr_root" sequence="5"/>
+			<menuitem action="action_employee_checklist" id="employee_checklist_items" parent="menu_employee_checklist" name="Employee Checklist" sequence="1"/>			
+			
+    </data>
+</odoo>

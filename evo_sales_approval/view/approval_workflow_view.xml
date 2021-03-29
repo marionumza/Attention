@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Approval Workflow views and Menu  -->
+
+        <record model="ir.ui.view" id="department_form_view">
+            <field name="name">approval.workflow.form.view</field>
+            <field name="model">approval.workflow</field>
+            <field name="arch" type="xml">
+                <form string="Approval Workflows">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="type" required="1"/>
+                                <field name="level" required="0" invisible="1"/>
+                                <field name="mail_template_id"/>
+                            </group>
+                            <group>
+                                <field name="active" required="1"/>
+                            </group>
+                        </group>
+                        <field name="approval_line_ids">
+                            <tree editable="bottom" >
+                                <field name="job_id" required="1"/>
+                                <field name="level" required="1"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_approval_workflow_tree" model="ir.ui.view">
+            <field name="name">approval.workflow.tree</field>
+            <field name="model">approval.workflow</field>
+            <field name="arch" type="xml">
+                <tree string="Approval Workflows">
+                    <field name="type"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_approval_workflow_tree" model="ir.actions.act_window">
+            <field name="name">Approval Workflows</field>
+            <field name="res_model">approval.workflow</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="view_approval_workflow_tree"/>
+        </record>
+
+        <menuitem
+                action="action_approval_workflow_tree"
+                id="menu_action_approval_workflow_tree"
+                parent="sale.menu_sale_config"
+                sequence="4"
+        />
+
+    </data>
+</odoo>

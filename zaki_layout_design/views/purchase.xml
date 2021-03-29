@@ -1,0 +1,709 @@
+﻿<odoo>
+    <data>
+        <template id="zaki_purchase_template">
+            <t t-call="web.html_container">
+                <!--                        <t t-call="web.external_layout">-->
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <!--                    <t t-call="web.external_layout">-->
+			 <div class="footer">
+                        <div class="row" style="font-size:8;">
+                           <div class="text-center">
+                             Page <span class="page"/> of <span class="topage"/>
+                          </div>
+                          </div>
+                       </div>
+                        <div class="page" style="font-size:17px">
+                            <div style="font-size:25px">
+                                <center>
+                                    طلب شراء
+                                </center>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td class="text-right">
+                                        <span t-field="o.name"/>
+                                        <strong>:رقم الطلب</strong>
+                                    </td>
+
+
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.name"/>
+                                        <strong>:إسم المورد</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>التاريخ :</strong>
+                                        <span t-esc="str(o.date_order)[:10]"/>
+                                    </td>
+
+                                    <td class="text-right">
+                                        <strong>التلفون</strong>
+                                        <!--span t-field="o.partner_id"
+                                              t-options='{"widget": "contact", "fields": ["phone"], "no_marker": True,}'/-->
+
+                                        <span style="direction: ltr;" t-esc="o.partner_id.phone"/>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td class="text-right">
+                                        <span t-field="o.partner_ref"/>
+                                        <strong>: إسم العميل</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.email"/>
+                                        <strong>:Email</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.vat"/>
+                                        <strong>:VAT ID</strong>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                            <table cellpadding="50" class="table table-bordered">
+                                <thead style="background-color: #C0C0C0;">
+                                    <tr>
+                                        <th class="text-right" rowspan="2">Total After VAt الإجمالى بعد
+                                            الضريبة
+                                        </th>
+                                        <th class="text-right" rowspan="2">VAT ضريبة %5</th>
+                                        <th class="text-right" rowspan="2">Total Before VAt الإجمالى قبل
+                                            الضريبة
+                                        </th>
+                                        <th class="text-right" rowspan="2">سعر الوجهUnit Price</th>
+                                        <th class="text-right" rowspan="2">No Faces عدد الأوجه</th>
+                                        <th class="text-right" rowspan="2">Duration المدة</th>
+                                        <th class="text-right" colspan="2">تاريخ الحملةCampaign Date</th>
+                                        <th class="text-right" rowspan="2">المدينة City</th>
+                                        <th class="text-right" rowspan="2">المنطقة Region</th>
+                                        <th class="text-right" rowspan="2">الحملة campaign</th>
+                                        <th class="text-right" rowspan="2">الفئة Category</th>
+                                        <th class="text-right" rowspan="2">Network نوع الشبكة</th>
+                                        <th class="text-right" rowspan="2">No الرقم</th>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-right">Campaign End نهاية الحملة</th>
+                                        <th class="text-right">Campaign Start بداية الحملة</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-set="total_before_vat" t-value="0"/>
+                                    <t t-set="total_price_unit" t-value="0"/>
+                                    <t t-set="total_vat" t-value="0"/>
+                                    <t t-set="total_after_vat" t-value="0"/>
+                                    <t t-set="count" t-value="0"/>
+                                    <t t-foreach="o.order_line" t-as="line">
+                                        <t t-set="vat_line" t-value="0"/>
+                                        <tr>
+                                            <t t-if="line.taxes_id">
+                                                <t t-foreach="line.taxes_id" t-as="tax">
+                                                    <t class="text-right">
+                                                        <t t-set="vat_line"
+                                                           t-value="vat_line+((tax.amount/100)*line.price_subtotal)"/>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                            <td class="text-right">
+                                                <t t-if="line.taxes_id">
+                                                    <span t-esc="vat_line+line.price_subtotal"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_after_vat"
+                                                       t-value="total_after_vat+(vat_line)+line.price_subtotal"/>
+                                                </t>
+                                                <t t-if="not line.taxes_id">
+                                                    <span t-esc="line.price_subtotal"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_after_vat"
+                                                       t-value="total_after_vat+line.price_subtotal"/>
+                                                </t>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-esc="vat_line"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_vat" t-value="total_vat+vat_line"/>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-field="line.price_subtotal"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_before_vat"
+                                                   t-value="total_before_vat+line.price_subtotal"/>
+
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.price_unit"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_price_unit"
+                                                   t-value="total_price_unit+line.price_unit"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <!--span t-field="line.product_qty"
+                                                      t-options='{"widget": "payment"}'/-->
+						<span t-esc="'%.0f'%line.product_qty"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <!--span t-field="line.campaign_period"
+                                                      t-options='{"widget": "payment"}'/-->
+						<span t-esc="'%.0f'%line.campaign_period"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.end_date"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span class="text-right" t-field="line.start_date"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.city_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.region_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.campaign"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.categ_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.product_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-set="count" t-value="count+1"/>
+                                                <t class="text-right" t-esc="count"/>
+                                            </td>
+
+                                        </tr>
+                                    </t>
+                                    <tr style="color:red;">
+                                        <td>
+                                            <span t-esc="total_after_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_before_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_price_unit"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td colspan="2">الإجمالى / Total</td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <div class="clearfix">
+                                <div id="total" class="row">
+                                    <div t-attf-class="#{'col-7' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                        <table class="table table-sm">
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total invoice Before VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-field="o.amount_untaxed"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الفاتورة قبل الضريبة</strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr style="">
+                                                <td>
+                                                    <strong>VAT 5%</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="total_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>الضريبة %5</strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Invoice After VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="total_after_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الفاتورة بعد الضريبة</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="color:black;">
+                                                <td colspan="3" class="text-right">
+                                                    <strong class="text-left">(SAR - ريال سعودى)</strong>
+                                                </td>
+                                            </tr>
+						                    <tr t-if="o.notes" style="color:red;">
+                                                <td colspan="3" class="text-right">
+                                                    <strong style="float:right" t-field="o.notes" class="text-left"/>
+                                                </td>
+                                            </tr>
+
+
+
+                                            <!--                                                        <tr style="">-->
+                                            <!--                                                            <td>-->
+                                            <!--                                                                <strong>Total Invoice After Tax</strong>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                            <td class="text-left">-->
+                                            <!--                                                                <span t-field="o.amount_total"/>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                            <td class="text-right">-->
+                                            <!--                                                                <strong>إجمالى الفاتورة بعد الضريبة</strong>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                        </tr>-->
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <center style="width:100%">
+                                    هذه الوثيقة مستخرجة من النظام الالي ولا تحتاج الي توقيع
+                                    <br/>
+                                    This document is extracted from the automated system and does not
+                                    require signature
+                                    <br/>
+                                    Your E-mail reply to this E-mail is considered as approval without any
+                                    responsibilies from our side. E-mail signatured is accepted.
+                                </center>
+
+                                <br/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <!--<div class="text-right">-->
+                            <!--<div style="color:red" class="text-right">-->
+                            <!--:-ملاحظة-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <br/>
+                            <div style="background-color: #C0C0C0; border-style: solid;" class="text-right">
+                                ملاحظة:- لن يتم اعتماد فاتورة الشراء لهذا الطلب بدون إرفاقه مع الفاتورة
+                                بالاضافة
+                                لصورة من الحملة
+                            </div>
+                            <br/>
+                            <div style="background-color: #C0C0C0; border-style: solid;">
+                                <center>
+                                    Office-Tel:00966114543640 / Abdeali - 0551762006 / Abdalelah -
+                                    0507665377
+                                    (www.attention.com.sa)
+                                </center>
+                            </div>
+
+
+                        </div>
+                    </t>
+                    <!--                            </t>-->
+                </t>
+            </t>
+        </template>
+
+	<template id="zaki_purchase_template_15">
+            <t t-call="web.html_container">
+                <!--                        <t t-call="web.external_layout">-->
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <!--                    <t t-call="web.external_layout">-->
+			 <div class="footer">
+                        <div class="row" style="font-size:8;">
+                           <div class="text-center">
+                             Page <span class="page"/> of <span class="topage"/>
+                          </div>
+                          </div>
+                       </div>
+                        <div class="page" style="font-size:17px">
+                            <div style="font-size:25px">
+                                <center>
+                                    طلب شراء
+                                </center>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td class="text-right">
+                                        <span t-field="o.name"/>
+                                        <strong>:رقم الطلب</strong>
+                                    </td>
+
+
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.name"/>
+                                        <strong>:إسم المورد</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>التاريخ :</strong>
+                                        <span t-esc="str(o.date_order)[:10]"/>
+                                    </td>
+
+                                    <td class="text-right">
+                                        <strong>التلفون</strong>
+                                        <!--span t-field="o.partner_id"
+                                              t-options='{"widget": "contact", "fields": ["phone"], "no_marker": True,}'/-->
+
+                                        <span style="direction: ltr;" t-esc="o.partner_id.phone"/>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td class="text-right">
+                                        <span t-field="o.partner_ref"/>
+                                        <strong>: إسم العميل</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.email"/>
+                                        <strong>:Email</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <span t-esc="o.partner_id.vat"/>
+                                        <strong>:VAT ID</strong>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                            <table cellpadding="50" class="table table-bordered">
+                                <thead style="background-color: #C0C0C0;">
+                                    <tr>
+                                        <th class="text-right" rowspan="2">Total After VAt الإجمالى بعد
+                                            الضريبة
+                                        </th>
+                                        <th class="text-right" rowspan="2">VAT  ضريبة %15</th>
+                                        <th class="text-right" rowspan="2">Total Before VAt الإجمالى قبل
+                                            الضريبة
+                                        </th>
+                                        <th class="text-right" rowspan="2">سعر الوجهUnit Price</th>
+                                        <th class="text-right" rowspan="2">No Faces عدد الأوجه</th>
+                                        <th class="text-right" rowspan="2">Duration المدة</th>
+                                        <th class="text-right" colspan="2">تاريخ الحملةCampaign Date</th>
+                                        <th class="text-right" rowspan="2">المدينة City</th>
+                                        <th class="text-right" rowspan="2">المنطقة Region</th>
+                                        <th class="text-right" rowspan="2">الحملة campaign</th>
+                                        <th class="text-right" rowspan="2">الفئة Category</th>
+                                        <th class="text-right" rowspan="2">Network نوع الشبكة</th>
+                                        <th class="text-right" rowspan="2">No الرقم</th>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-right">Campaign End نهاية الحملة</th>
+                                        <th class="text-right">Campaign Start بداية الحملة</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-set="total_before_vat" t-value="0"/>
+                                    <t t-set="total_price_unit" t-value="0"/>
+                                    <t t-set="total_vat" t-value="0"/>
+                                    <t t-set="total_after_vat" t-value="0"/>
+                                    <t t-set="count" t-value="0"/>
+                                    <t t-foreach="o.order_line" t-as="line">
+                                        <t t-set="vat_line" t-value="0"/>
+                                        <tr>
+                                            <t t-if="line.taxes_id">
+                                                <t t-foreach="line.taxes_id" t-as="tax">
+                                                    <t class="text-right">
+                                                        <t t-set="vat_line"
+                                                           t-value="vat_line+((tax.amount/100)*line.price_subtotal)"/>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                            <td class="text-right">
+                                                <t t-if="line.taxes_id">
+                                                    <span t-esc="vat_line+line.price_subtotal"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_after_vat"
+                                                       t-value="total_after_vat+(vat_line)+line.price_subtotal"/>
+                                                </t>
+                                                <t t-if="not line.taxes_id">
+                                                    <span t-esc="line.price_subtotal"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_after_vat"
+                                                       t-value="total_after_vat+line.price_subtotal"/>
+                                                </t>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-esc="vat_line"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_vat" t-value="total_vat+vat_line"/>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-field="line.price_subtotal"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_before_vat"
+                                                   t-value="total_before_vat+line.price_subtotal"/>
+
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.price_unit"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <t t-set="total_price_unit"
+                                                   t-value="total_price_unit+line.price_unit"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <!--span t-field="line.product_qty"
+                                                      t-options='{"widget": "payment"}'/-->
+						<span t-esc="'%.0f'%line.product_qty"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <!--span t-field="line.campaign_period"
+                                                      t-options='{"widget": "payment"}'/-->
+						<span t-esc="'%.0f'%line.campaign_period"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.end_date"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span class="text-right" t-field="line.start_date"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.city_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.region_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.campaign"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.categ_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.product_id.name"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-set="count" t-value="count+1"/>
+                                                <t class="text-right" t-esc="count"/>
+                                            </td>
+
+                                        </tr>
+                                    </t>
+                                    <tr style="color:red;">
+                                        <td>
+                                            <span t-esc="total_after_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_before_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_price_unit"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td colspan="2">الإجمالى / Total</td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <div class="clearfix">
+                                <div id="total" class="row">
+                                    <div t-attf-class="#{'col-7' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                        <table class="table table-sm">
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total invoice Before VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-field="o.amount_untaxed"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الفاتورة قبل الضريبة</strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr style="">
+                                                <td>
+                                                    <strong>VAT 15%</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="total_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>الضريبة %15</strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Invoice After VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="total_after_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الفاتورة بعد الضريبة</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="color:black;">
+                                                <td colspan="3" class="text-right">
+                                                    <strong class="text-left">(SAR - ريال سعودى)</strong>
+                                                </td>
+                                            </tr>
+						                    <tr t-if="o.notes" style="color:red;">
+                                                <td colspan="3" class="text-right">
+                                                    <strong style="float:right" t-field="o.notes" class="text-left"/>
+                                                </td>
+                                            </tr>
+
+
+
+                                            <!--                                                        <tr style="">-->
+                                            <!--                                                            <td>-->
+                                            <!--                                                                <strong>Total Invoice After Tax</strong>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                            <td class="text-left">-->
+                                            <!--                                                                <span t-field="o.amount_total"/>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                            <td class="text-right">-->
+                                            <!--                                                                <strong>إجمالى الفاتورة بعد الضريبة</strong>-->
+                                            <!--                                                            </td>-->
+                                            <!--                                                        </tr>-->
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <center style="width:100%">
+                                    هذه الوثيقة مستخرجة من النظام الالي ولا تحتاج الي توقيع
+                                    <br/>
+                                    This document is extracted from the automated system and does not
+                                    require signature
+                                    <br/>
+                                    Your E-mail reply to this E-mail is considered as approval without any
+                                    responsibilies from our side. E-mail signatured is accepted.
+                                </center>
+
+                                <br/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <!--<div class="text-right">-->
+                            <!--<div style="color:red" class="text-right">-->
+                            <!--:-ملاحظة-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <br/>
+                            <div style="background-color: #C0C0C0; border-style: solid;" class="text-right">
+                                ملاحظة:- لن يتم اعتماد فاتورة الشراء لهذا الطلب بدون إرفاقه مع الفاتورة
+                                بالاضافة
+                                لصورة من الحملة
+                            </div>
+                            <br/>
+                            <div style="background-color: #C0C0C0; border-style: solid;">
+                                <center>
+                                    Office-Tel:00966114543640 / Abdeali - 0551762006 / Abdalelah -
+                                    0507665377
+                                    (www.attention.com.sa)
+                                </center>
+                            </div>
+
+
+                        </div>
+                    </t>
+                    <!--                            </t>-->
+                </t>
+            </t>
+        </template>
+
+        <report id="zaki_purchase_report"
+                model="purchase.order"
+                report_type="qweb-pdf"
+                string="Zaki Purchase Order 5%"
+                menu="True"
+                name="zaki_layout_design.zaki_purchase_template"
+                file="zaki_layout_design.zaki_purchase_template"
+        />
+
+	<report id="zaki_purchase_report_15"
+                model="purchase.order"
+                report_type="qweb-pdf"
+                string="Zaki Purchase Order 15%"
+                menu="True"
+                name="zaki_layout_design.zaki_purchase_template_15"
+                file="zaki_layout_design.zaki_purchase_template_15"
+        />
+
+        <!--<record id="paperformat_a5_report" model="report.paperformat">-->
+        <!--<field name="name">Landscape</field>-->
+        <!--<field name="default" eval="True"/>-->
+        <!--<field name="format">A5</field>-->
+        <!--<field name="orientation">Landscape</field>-->
+        <!--<field name="margin_top">40</field>-->
+        <!--<field name="margin_bottom">23</field>-->
+        <!--<field name="margin_left">5</field>-->
+        <!--<field name="margin_right">5</field>-->
+        <!--<field name="header_line" eval="False"/>-->
+        <!--<field name="header_spacing">35</field>-->
+        <!--<field name="dpi">90</field>-->
+        <!--</record>-->
+        <!--<record id="zaki_layout_design.zaki_purchase_report" model="ir.actions.report">-->
+        <!--<field name="paperformat_id" ref="zaki_layout_design.paperformat_a5_report"/>-->
+        <!--</record>-->
+        <!---->
+    </data>
+</odoo>

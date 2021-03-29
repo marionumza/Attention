@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- wizard form view -->
+    <record id="view_top_saleperson_wizard_form" model="ir.ui.view">
+        <field name="name">top.salepesron.wizard.form</field>
+        <field name="model">top.salepesron.wizard</field>
+        <field name="arch" type="xml">
+            <form string ="Sale Person">             
+                <group> 
+                    <field name="from_date" required="1"/>
+                    <field name="to_date" required="1"/>  
+                </group>
+                <footer>
+                    <button string='Submit' name="create_saleperson_form" type='object' class='btn-primary'/>
+                    <button string='Discard' class='btn-default' special="cancel"/>	
+                </footer>
+            </form>		
+        </field>
+    </record>
+
+    <!-- Action for wizard --> 
+    <record id="view_top_saleperson_wizard_form_action" model="ir.actions.act_window">
+        <field name="name">Top saleperson</field>
+        <field name="res_model">top.salepesron.wizard</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">form,tree</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_top_saleperson_wizard_form"/>	
+    </record>
+
+</odoo>
+  
+
+
+
+
+

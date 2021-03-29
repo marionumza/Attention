@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <template id="zaki_inherit_internal_layout" inherit_id="web.internal_layout">
+            <!-- position values: after|before|replace|attributes|inside -->
+            <xpath expr="//div[contains(@class, 'header')]" position="replace">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-3">
+                            <div>
+                                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                     style="width:100px;height:100px;" class="float-left" alt="Logo"/>
+                                <br/>
+                                <br/>
+                            </div>
+                            <!--<div class="float-left">-->
+                            <!--<span t-esc="company.name"/>-->
+                            <!--</div>-->
+                        </div>
+                        <!--<div class="col-2 offset-2 text-left">-->
+                        <!--</div>-->
+                        <div class="col-7 offset-2 text-right">
+                            <br/>
+                            <br/>
+                            <h4>Zaki Advertising Company - شركة ذكى للدعاية والإعلان</h4>
+                        </div>
+                        <div class="col-2 offset-3 text-right">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <span class="page"/>
+                                </li>
+                                <li class="list-inline-item"></li>
+                                <li class="list-inline-item">
+                                    <span class="topage"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

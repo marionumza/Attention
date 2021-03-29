@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_employee_form_inherit_card" model="ir.ui.view">
+          <field name="name">hr employee form</field>
+          <field name="model">hr.employee</field>
+          <field name="inherit_id" ref="hr.view_employee_form" />
+          <field name="arch" type="xml">
+                <xpath expr="//page[@name='hr_settings']" position="after">
+                    <page string="Card Details">
+                        <group>
+                            <group string="Iqama Details">
+                                <field name="iqama_no"/>
+                                <field name="iqama_location"/>
+                                <field name="iqama_start_date"/>
+                                <field name="iqama_expiry_date"/>
+                                <field name="iqama_note"/>
+                            </group>
+                            <group string="Passport Details">
+                                <field name="passport_no"/>
+                                <field name="passport_location"/>
+                                <field name="passport_start_date"/>
+                                <field name="passport_expiry_date"/>
+                                <field name="passport_note"/>
+                            </group>
+                            <group string="Driving License Details">
+                                <field name="driving_no"/>
+                                <field name="driving_location"/>
+                                <field name="driving_start_date"/>
+                                <field name="driving_expiry_date"/>
+                                <field name="driving_note"/>
+                            </group>
+                            <group string="Car Insurance Details">
+                                <field name="car_no"/>
+                                <field name="car_location"/>
+                                <field name="car_start_date"/>
+                                <field name="car_expiry_date"/>
+                                <field name="car_note"/>
+                            </group>
+                            <group string="Medical ID Details">
+                                <field name="medical_no"/>
+                                <field name="medical_location"/>
+                                <field name="medical_start_date"/>
+                                <field name="medical_expiry_date"/>
+                                <field name="medical_note"/>
+                            </group>
+                            <group string="Work Permit Details">
+                                <field name="permit_no"/>
+                                <field name="permit_location"/>
+                                <field name="permit_start_date"/>
+                                <field name="permit_expiry_date"/>
+                                <field name="permit_note"/>
+                            </group>
+                            <group string="Aramco Card Details">
+                                <field name="aramco_no"/>
+                                <field name="aramco_location"/>
+                                <field name="aramco_start_date"/>
+                                <field name="aramco_expiry_date"/>
+                                <field name="aramco_note"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                
+          </field>
+    </record>
+    </data>
+</odoo>

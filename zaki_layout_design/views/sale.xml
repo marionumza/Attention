@@ -1,0 +1,317 @@
+﻿<odoo>
+    <data>
+        <template id="zaki_sale_template">
+
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.internal_layout">
+			<div class="footer">
+                        <div class="row" style="font-size:8;">
+                           <div class="text-center">
+                             Page <span class="page"/> of <span class="topage"/>
+                          </div>
+                          </div>
+                       </div>
+                        <div class="page" style="font-size:15px">
+                            <div style="border-style: solid;">
+
+                                <center>
+                                    <t t-if="doc.state  =='draft' ">
+                                        <h4>Quotation</h4>
+                                    </t>
+                                    <t t-if="doc.state  !='draft' ">
+                                        <h4>Sales Order</h4>
+                                    </t>
+                                </center>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div style="width:50%">
+                                    <div>Client :
+                                        <span t-field="doc.partner_id.name"/>
+                                    </div>
+                                    <!--                                    <div>Attention To:-->
+                                    <!--                                        <span t-field="doc.attention_to"/>-->
+                                    <!--                                    </div>-->
+                                    <div>City :
+                                        <span t-field="doc.partner_id.city"/>
+                                    </div>
+                                </div>
+                                <div class="text-right" style="width:50%">
+                                    <div>
+                                        <span t-field="doc.ref_number"/>
+                                        <span>: الرقم المرجعى / Ref Number</span>
+                                    </div>
+
+                                    <div>
+                                        <span t-field="doc.name"/>
+                                        <t t-if="doc.state  =='draft' ">
+                                            <span>: رقم الطلب / Quotation No</span>
+                                        </t>
+                                        <t t-if="doc.state  !='draft' ">
+                                            <span>: رقم الطلب / Order No</span>
+                                        </t>
+                                    </div>
+
+                                    <div>
+                                        <span t-field="doc.validity_date"/>
+                                        <t t-if="doc.state  =='draft' ">
+                                            <span>:تاريخ الطلب / Quotation Date</span>
+                                        </t>
+                                        <t t-if="doc.state  !='draft' ">
+                                            <span>:تاريخ الطلب / Order Date</span>
+                                        </t>
+
+                                    </div>
+                                    <div>310214674700003 : #VAT</div>
+
+                                </div>
+                            </div>
+                            <br/>
+                            <table cellpadding="50" class="table table-bordered">
+                                <thead>
+                                    <tr style="background-color: #99CC00">
+                                        <th class="text-left">Media الشبكة</th>
+                                        <th class="text-left">Size (Frequency)</th>
+                                        <th class="text-left">Region المنطقة</th>
+                                        <th class="text-left">City المدينة</th>
+                                        <th class="text-left">Category الفئة</th>
+                                        <th class="text-left">NO. of Paid Faces عدد الأوجه</th>
+                                        <th class="text-left">NO. of Free facesعدد الأوجه المجانية</th>
+                                        <th class="text-left">Paid Week Period المدة المدفوعة</th>
+                                        <th class="text-left">Free Week Period المدة المجانية</th>
+                                        <th class="text-left">Starting Date تاريخ البداية</th>
+                                        <th class="text-left">End Date تاريخ النهاية</th>
+                                        <th class="text-left">Gross Rate SR الإجمالى قبل االخصم</th>
+                                        <th class="text-left">Discount % الخصم</th>
+                                        <th class="text-left">Total الاجمالى بعد الخصم</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-set="total_before_disc" t-value="0"/>
+                                    <t t-set="total_disc" t-value="0"/>
+                                    <t t-set="total_after_disc" t-value="0"/>
+                                    <t t-foreach="doc.order_line" t-as="line">
+                                        <tr>
+                                            <td style="background-color: #C0C0C0C0C0C0">
+                                                <span t-field="line.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.value_ids.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.region_id.name"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="line.city_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.categ_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.paid_faces"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.free_faces"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.paid_weeks"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.free_weeks"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.start_date"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.end_date"/>
+                                            </td>
+                                            <td>
+                                                <t t-if="line.categ_id.is_print ">
+                                                    <span t-esc="line.price_unit"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_before_disc"
+                                                       t-value="total_before_disc+line.price_unit"
+                                                    />
+                                                </t>
+                                                <t t-if="not line.categ_id.is_print ">
+                                                    <span t-field="line.gross_rate"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    <t t-set="total_before_disc"
+                                                       t-value="total_before_disc+line.gross_rate"
+                                                    />
+                                                </t>
+                                            </td>
+                                            <td>
+
+                                                <span t-esc="line.tot_discount"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                                                <t t-set="total_disc"
+                                                   t-value="total_disc+line.tot_discount"/>
+                                            </td>
+                                            <td>
+                                                <t t-if="line.categ_id.is_print ">
+                                                    <t t-if="line.printing_cost > 0 ">
+                                                        <span t-esc="line.printing_cost"
+                                                              t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                        <t t-set="total_after_disc"
+                                                           t-value="total_after_disc+line.printing_cost"/>
+                                                    </t>
+                                                    <t t-if="line.printing_cost == 0 ">
+                                                        <span t-esc="line.price_unit - line.tot_discount"
+                                                              t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                        <t t-set="total_after_disc"
+                                                           t-value="total_after_disc+line.price_subtotal"/>
+                                                    </t>
+
+                                                </t>
+                                                <t t-if="not line.categ_id.is_print   ">
+                                                    <t t-set="total_after_disc"
+                                                       t-value="total_after_disc+line.price_subtotal"/>
+                                                    <span t-field="line.price_subtotal"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+
+                                    </t>
+                                    <tr style="background-color: #C0C0C0; color:red;">
+                                        <td colspan="11">Total الإجمالي</td>
+                                        <td>
+                                            <t t-esc="total_before_disc"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="total_disc"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="total_after_disc"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <td colspan="12">Total Before VAT الإجمالى قبل الضريبة</td>
+                                        <td colspan="2">
+                                            <span t-field="doc.amount_untaxed"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <td colspan="12">VAT 15% الضريبة</td>
+                                        <td colspan="2">
+                                            <span t-field="doc.amount_tax"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <td colspan="12">Total After VAT الإجمالى بعد الضريبة</td>
+                                        <td colspan="2">
+                                            <span t-field="doc.amount_total"/>
+                                        </td>
+                                    </tr>
+                                    <tr  t-if="doc.note" style="background-color: #C0C0C0; color:red">
+                                        <td colspan="13" class="text-right">
+                                            <strong style="float:right" t-field="doc.note" class="text-left"/>
+                                            <strong class="text-left">(SAR - ريال سعودى)</strong>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <br/>
+                            <div class="row">
+                                <div style="width:50%">
+                                    <div>Authorized By :
+                                        <span t-field="doc.create_uid"/>
+                                    </div>
+                                </div>
+                                <div style="width:50%">
+                                    <div>Client Approval:</div>
+                                </div>
+                            </div>
+                            <div style="border-style: solid;">
+                                <center>
+                                    <div>PLease make cheque payable to :
+                                        <span style="color:red">
+                                            ZAKI ADVERTISING COMPANY
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span style="color:red">
+                                            شركة ذكى للدعاية والإعلان
+                                        </span>
+                                        ارجو اصدار الشيك باسم
+                                    </div>
+                                    <div>IBAN No.
+                                        <span style="color:red">
+                                            SA3745000000165650003001
+                                        </span>
+                                        Swift:
+                                        <span style="color:red">
+                                            SABBSARI
+                                        </span>
+                                    </div>
+                                </center>
+                            </div>
+                            <center>
+                                <div style="background-color: #C0C0C0; border-style: solid;border-top:0px">
+                                    <div>
+                                        P.O.BOX 305858 RIYADH 11391 K.S.A - TEL : 00966114543640 - FAX :
+                                        00966114541253
+                                    </div>
+                                    <div>
+                                        ص.ب 305858 الرياض 11361 المملكة العربية السعودية - تلفون : 00966114543640 -
+                                        فاكس : 00966114541253
+                                    </div>
+                                </div>
+
+                            </center>
+                        </div>
+                        <!--<div class="row" style="padding:30px">-->
+                        <!--<center style="width:50%">-->
+                        <!--<center>مدير التشغيل</center>-->
+                        <!--<p>________________________</p>-->
+                        <!--</center>-->
+                        <!--<center style="width:50%">-->
+                        <!--<center>المدير الفني</center>-->
+                        <!--<p>________________________</p>-->
+                        <!--</center>-->
+                        <!--<br/>-->
+
+                        <!--</div>-->
+                        <div class="row">
+                            <center style="width:100%">
+                                هذه الوثيقة مستخرجة من النظام الالي ولا تحتاج الي توقيع
+                                <br/>
+                                This document is extracted from the automated system and does not
+                                require signature
+                                <br/>
+                                Your E-mail reply to this E-mail is considered as approval without any
+                                responsibilies from our side. E-mail signatured is accepted.
+                            </center>
+
+                            <br/>
+
+                        </div>
+
+
+                    </t>
+                </t>
+                <!--                </t>-->
+            </t>
+        </template>
+
+        <report id="zaki_sale_report"
+                model="sale.order"
+                report_type="qweb-html"
+                string="Zaki Sale Order"
+                menu="True"
+                name="zaki_layout_design.zaki_sale_template"
+                file="zaki_layout_design.zaki_sale_template"
+        />
+    </data>
+</odoo>

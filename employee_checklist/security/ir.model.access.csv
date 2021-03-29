@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_item_user,employee.item,model_employee_item,base.group_user,1,1,1,1
+access_employee_item_manager,employee.item,model_employee_item,hr.group_hr_manager,1,1,1,1
+access_employee_item_line_user,employee.item.line,model_employee_item_line,base.group_user,1,1,1,1
+access_employee_item_line_manager,employee.item.line,model_employee_item_line,hr.group_hr_manager,1,1,1,1
+access_employee_item_officer,employee.item,model_employee_item,hr.group_hr_user,1,1,1,1

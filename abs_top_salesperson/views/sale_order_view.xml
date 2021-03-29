@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  tree view for Top Saleperson -->
+    <record id="view_top_sale_person_tree" model="ir.ui.view">
+        <field name="name">top.sale.person.tree</field>
+        <field name="model">top.sale.person</field>
+        <field name="arch" type="xml">
+            <tree create='false' edit='false' string="Top Saleperson" >
+                <field name="sale_person"/>
+                <field name="sale_person_amount"/>		
+            </tree>
+        </field>
+    </record>
+
+    <!-- add menu in saleorder -->
+    <menuitem id="menu_top_sale_person"
+    name="Top salesperson"
+    sequence='2' 
+    parent="sale.sale_menu_root"
+    action="view_top_saleperson_wizard_form_action" />
+</odoo>

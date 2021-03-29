@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+        <record id="zaki_inherit_partner_form" model="ir.ui.view">
+            <field name="name">view.inherit.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="attention_to" />
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

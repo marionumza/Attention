@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_approval_workflow,access_approval_workflow,model_approval_workflow,,1,1,1,1
+access_approval_workflow_line,access_approval_workflow_line,model_approval_workflow_line,,1,1,1,1
+access_record_approval,access_record_approval,model_record_approval,,1,1,1,1

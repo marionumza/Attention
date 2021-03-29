@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+
+        <record id="hr_employee_inheit_code" model="ir.ui.view">
+            <field name="name">hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="code" placeholder="Code"/>
+                </xpath>
+
+            </field>
+        </record>
+
+ <record id="view_users_form_inherit_user" model="ir.ui.view">
+            <field name="name">view.users.form.inherit.user</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[2]/group[1]" position="before">
+                    <!-- Add your fields or attributes here -->
+                    <group name="discount">
+                        <field name="discount_print_allow"  />
+                    </group>
+
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="account_invoice_form_inherit">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="zaki_retail.view_inherit_zaki_retail_customer_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref_number']" position="attributes">
+                <attribute name="string">Bo Number</attribute>
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="account_invoice_supplier_form_inherit">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='reference']" position="after">
+                <field name="vendor_invoice_number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="account_move_form_inherit">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='period_id']" position="after">
+                <field name="bo_number"/>
+                <field name="vendor_invoice_number"/>
+                <field name="vendor_source_document"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

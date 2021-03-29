@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+
+        <record id="zaki_extra_view_inherit_vendor_bill_form" model="ir.ui.view">
+            <field name="name">view.inherit.account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='reference']" position="attributes">
+                    <attribute name="string">Vendor Invoice Number</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

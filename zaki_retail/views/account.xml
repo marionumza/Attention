@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+        <record id="view_inherit_zaki_retail_customer_account_form" model="ir.ui.view">
+            <field name="name">view.inherit.customer.bill.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='number']/.." position="replace">
+                    <div attrs="{'invisible': [('sequence_number_next_prefix','!=',False)]}">
+                        <field name="number" readonly="1" class="oe_inline"/>
+                    </div>
+                    <div attrs="{'invisible': [('sequence_number_next_prefix','==',False)]}">
+                        <field name="number" readonly="1" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="seq_number" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="ref_number"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_tax']" position="after">
+                    <field name="discount_total" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="string">Media</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='product_id']" position="after">
+                    <field name="value_ids"/>
+                    <field name="pricelist_id"/>
+                    <field name="prc_unit"/>
+                    <field name="region_id"/>
+                    <field name="city_id" domain="[('branch_id','=',region_id)]"/>
+                    <field name="categ_id"/>
+                    <field name="paid_faces"/>
+                    <field name="free_faces"/>
+                    <field name="paid_weeks"/>
+                    <field name="free_weeks"/>
+                    <field name="discount"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='price_subtotal']" position="before">
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="gross_rate"/>
+                    <field name="net_cost"/>
+                    <field name="printing_cost"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='discount']" position="replace">
+                    <field name="discount" invisible="1"/>
+                    <field name="disc" />
+                    <field name="campaign_name"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--<record id="seq_number_account1" model="ir.sequence">-->
+            <!--<field name="name">account.invoice</field>-->
+            <!--<field name="code">account.invoice</field>-->
+            <!--<field name="active">TRUE</field>-->
+            <!--<field name="prefix">CRN/20/</field>-->
+            <!--<field name="padding">5</field>-->
+            <!--<field name="number_next">1</field>-->
+            <!--<field name="number_increment">1</field>-->
+        <!--</record>-->
+
+        <record id="seq_purchase_order" model="ir.sequence">
+            <field name="name">Purchase Order</field>
+            <field name="code">purchase.order</field>
+            <field name="prefix">PO</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+        <record id="zaki_view_inherit_vendor_bill_form" model="ir.ui.view">
+            <field name="name">view.inherit.account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vendor_bill_id']" position="after">
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='account_analytic_id']"
+                       position="after">
+                    <field name="analytic_ids" widget="many2many_tags" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='product_id']" position="after">
+                    <field name="region_id"/>
+                    <field name="city_id"/>
+                    <field name="categ_id"/>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="string">Media</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='account_id']" position="attributes">
+                    <attribute name="string">Ledger</attribute>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
