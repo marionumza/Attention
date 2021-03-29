@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_popup_reminder,popup.reminder,model_popup_reminder,base.group_user,1,1,1,0
+access_popup_reminder_portal,popup.reminder.portal,model_popup_reminder,base.group_portal,1,0,1,0
+access_field_sequence_list,field.sequence.list,model_field_sequence_list,base.group_user,1,1,1,1
+access_field_sequence_portal_list,field.sequence.portal.list,model_field_sequence_list,base.group_portal,1,0,1,0

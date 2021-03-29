@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_commission_user,sale.commission.user,sales_commission_generic.model_sale_commission,group_sales_commission,1,1,1,1
+access_sale_commission_exception_user,sale.commission.exception.user,sales_commission_generic.model_sale_commission_exception,group_sales_commission,1,1,1,1
+access_invoice_sale_commission_user,invoice.sale.commission.user,sales_commission_generic.model_invoice_sale_commission,group_sales_commission,1,1,1,1
+access_discount_commssion_user,discount.commission.rules.user,sales_commission_generic.model_discount_commission_rules,group_sales_commission,1,1,1,1
+access_create_invoice_commission,create.invoice.commission.user,sales_commission_generic.model_create_invoice_commission,group_sales_commission,1,1,1,1
+access_wizard_invoice_sale_commission,wizard.invoice.sale.commission.user,sales_commission_generic.model_wizard_invoice_sale_commission,group_sales_commission,1,1,1,1

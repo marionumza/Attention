@@ -1,0 +1,13 @@
+{
+    'name': 'Adding & Hiding options in List View',
+    'version': '10.0',
+    'description': """Adding Subscription Cancel Date & End date & Hiding Contact Info in Customer Screen List View""",
+    'author': 'Me',
+    'website': 'https://www.mycompany.com',
+    'category': 'Customer',
+    'depends': ['base','techsup','Subscription_Cancel_Date'],
+    'data': ['views/customer_list_view.xml'],
+    'demo': [],
+    'installable': True,
+    'auto_install': False,
+}

@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <record id="group_printing_cost" model="res.groups">
+            <field name="name">Printing cost</field>
+            <field name="comment">Show / Hide Printing Cost </field>
+        </record>
+    </data>
+</odoo>

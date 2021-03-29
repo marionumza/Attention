@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="so_approval_wf_email_template" model="mail.template">
+            <field name="name">Send for Approval Mail Template</field>
+            <field name="email_from">${ctx.get('email_from') | safe}</field>
+            <field name="subject">Sale Order: Send for Approval</field>
+            <field name="email_to">${ctx.get('email_to') | safe}</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="body_html"><![CDATA[
+            <div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+                <p>Hello,</p>
+                <p>The sale order <b>${object.name}</b> amounting <b>${object.amount_total} ${object.currency_id.name}</b> is waiting for your approval.
+                Please click the button to check the Sale Order.</p>
+
+                <div style="margin: 16px 0px 16px 0px;">
+                    <a href="${object.get_full_url()}"
+                        style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                        View Sale Order
+                    </a>
+                </div>
+                <br/>
+                <p>Thanks!</p>
+            </div>
+            ]]></field>
+        </record>
+
+
+
+
+          <record id="so_approval_wf_email_template2" model="mail.template">
+            <field name="name">Send for Confirm Mail Template</field>
+            <field name="email_from">${ctx.get('email_from') | safe}</field>
+            <field name="subject">Sale Order: Confirmed</field>
+            <field name="email_to">${ctx.get('email_to') | safe}</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="body_html"><![CDATA[
+            <div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+                <p>Hello,</p>
+                <p>The sale order <b>${object.name}</b> amounting <b>${object.amount_total} ${object.currency_id.name}</b> is Confirmed.
+                Please click the button to check the Sale Order.</p>
+
+                <div style="margin: 16px 0px 16px 0px;">
+                    <a href="${object.get_full_url()}"
+                        style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                        View Sale Order
+                    </a>
+                </div>
+                <br/>
+                <p>Thanks!</p>
+            </div>
+            ]]></field>
+        </record>
+    </data>
+</odoo>

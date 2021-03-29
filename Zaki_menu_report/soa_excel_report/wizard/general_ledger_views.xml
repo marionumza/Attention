@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="general_ledger_wizard_excel_form_view" model="ir.ui.view">
+        <field name="name">General Ledger</field>
+        <field name="model">general.ledger.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group name="date_range">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="partner_id" required="1"/>
+                    </group>
+                    <group name="other_filters">
+                        <field name="target_move" widget="radio"/>
+                        <field name="centralize"/>
+                        <field name="partner_ids" nolabel="1"
+                               widget="many2many_tags"
+                               options="{'no_create': True}" invisible='1'/>
+                        <field name="account_ids"
+                               nolabel="1"
+                               widget="many2many_tags"
+                               options="{'no_create': True}" invisible="1"/>
+                        <field name="receivable_accounts_only" invisible="1"/>
+                        <field name="payable_accounts_only" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="button_export_xlsx_soa" string="Export XLSX" type="object"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="action_general_ledger_wizard_soa"
+                name="General Ledger SOA"
+                res_model="general.ledger.report.wizard"
+                view_type="form"
+                view_mode="form"
+                view_id="general_ledger_wizard_excel_form_view"
+                target="new" />
+
+    <menuitem
+        parent="zaki_profit_loss_excel_report.zaki_account_reports"
+        action="action_general_ledger_wizard_soa"
+        id="menu_general_ledger_wizard_soa"
+        sequence="11"
+        />
+</odoo>

@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <record id="view_category_property_form" model="ir.ui.view">
+            <field name="name">product_analytic_account.product.categ.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="is_print"/>
+                    <field name="is_rent"/>
+                </field>
+
+            </field>
+        </record>
+        <record id="csutom_product_inherit_form" model="ir.ui.view">
+            <field name="name">view.inherit.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='general_information']/.." position="inside">
+                    <page name="region" string="Faces No.">
+                        <label for="region_ids" string="Region"/>
+                        <field name="region_ids">
+                            <tree string="Region" editable="bottom">
+                                <field name="region_id"/>
+                                <field name="city_id"/>
+                                <field name="total_fees"/>
+                                <field name="face_uses"/>
+                                <field name="available"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="print_cost_amount"/>
+
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

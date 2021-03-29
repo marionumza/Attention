@@ -1,0 +1,918 @@
+﻿<odoo>
+    <data>
+        <template id="zaki_credit_note_template">
+            <t t-call="web.html_container">
+                <!--                <t t-call="web.external_layout">-->
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <!--                    <t t-call="web.external_layout">-->
+			<div class="footer">
+                        <div class="row" style="font-size:8;">
+                           <div class="text-center">
+                             Page <span class="page"/> of <span class="topage"/>
+                          </div>
+                          </div>
+                       </div>
+                        <div class="page" style="font-size:15px">
+                            <center>
+                                <!--<h3>  شركة ذكى للدعاية والإعلان - طلب طباعة</h3>-->
+
+                                                               <h4>Credit Note / اشعار دائن</h4>
+                            </center>
+
+                            <table id="tablePreview" cellpadding="50" class="table table-bordered">
+                                <!--Table head-->
+                                <thead>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th colspan="4">
+                                            <span t-field="o.partner_id.name"/>
+                                        </th>
+                                        <th class="text-right">إسم العميل</th>
+                                        <th>Credit Note No</th>
+                                        <th colspan="2">
+                                            <span t-field="o.number"/>
+                                        </th>
+                                        <th class="text-right">رقم الاشعار </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th>Customer Name</th>
+                                        <th colspan="4" class="text-right">
+                                            <span t-field="o.partner_id.name"/>
+                                        </th>
+                                        <th>Credit Note DATE</th>
+                                        <th colspan="2">
+                                            <span t-field="o.date_invoice"/>
+                                        </th>
+                                        <th class="text-right">تاريخ الاشعار</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th>
+                                            <span t-field="o.partner_id.vat"/>
+                                        </th>
+                                        <th class="text-right" colspan="4">الرقم التعريفى لضريبة القيمة المضافة
+                                            للعميل
+                                        </th>
+                                        <th>P.O.NO.</th>
+                                        <th colspan="2">
+                                            <span t-field="o.origin"/>
+                                        </th>
+                                        <th class="text-right">رقم التعميد</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th class="text-right" colspan="2">المملكة العربية السعودية</th>
+                                        <th class="text-right" colspan="3"><span t-field="o.partner_id.city"/> , <span t-field="o.partner_id.street"/> : العنوان</th>
+                                        <th>P.O.DATE</th>
+                                        <th colspan="2">
+                                            <span t-field="o.date_due"/>
+                                        </th>
+                                        <th class="text-right">تاريخ التعميد</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th colspan="2">
+                                            <span t-field="o.ref_number"/>
+                                        </th>
+                                        <th class="text-right" colspan="3">Ref Number الرقم المرجعى</th>
+
+                                        <!--  <th style="visibility: hidden;" class="text-right" colspan="5"></th>-->
+                                        <!--  <th style="visibility: hidden;" class="text-right" colspan="5"></th>-->
+                                        <th>VAT No.</th>
+                                        <th colspan="2">310214674700003</th>
+                                        <th class="text-right">الرقم الضريبى</th>
+                                    </tr>
+                                    <tr style="visibility: hidden;">
+                                        <!-- Please Do not remove this tr,  -->
+                                        <th scope="row">3</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>@</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tbody>
+                                <!--Table body-->
+                            </table>
+
+                            <table style="direction: rtl;" cellpadding="50" class="table table-bordered"
+                                   name="invoice_line_table">
+                                <thead>
+                                    <tr style="background-color: #C0C0C0">
+                                        <t t-set="colspan" t-value="6"/>
+                                        <th>
+                                            <span>City المدينة</span>
+                                        </th>
+                                        <th>
+                                            <span>Network الشبكة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign Start بداية الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign End نهابة الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>عدد الأوجه No Faces</span>
+                                        </th>
+                                        <!--th>
+                                            <span>تكلفة الإيجار Rent Cost</span>
+                                        </th-->
+                                        <th>
+                                            <span>تكلفة الطابعة Printing Cost</span>
+                                        </th>
+                                        <!--th>
+                                            <span>الإجمالى قبل الخصم Total Before Discount</span>
+                                        </th-->
+                                        <th>
+                                            <span>تكلفة الإيجار Rent Cost</span>
+                                        </th>
+                                        <th>
+                                            <span>الخصم Discount</span>
+                                        </th>
+                                        <th>
+                                            <span>الإجمالى قبل الضريبة Total Before VAT</span>
+                                        </th>
+                                        <th>
+                                            <span>الضريبة VAT 5%</span>
+                                        </th>
+                                        <th>
+                                            <span>الإجمالى بعد الضريبة Total After VAT</span>
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <t t-set="rent_total" t-value="0"/>
+                                    <t t-set="printing_total" t-value="0"/>
+                                    <t t-set="rent_total" t-value="0"/>
+                                    <t t-set="disc_total" t-value="0"/>
+                                    <t t-set="total_before_vat" t-value="0"/>
+                                    <t t-set="total_before_disc" t-value="0"/>
+                                    <t t-set="total_vat" t-value="0"/>
+                                    <t t-set="total_after_vat" t-value="0"/>
+
+                                    <tr t-foreach="o.invoice_line_ids" t-as="line">
+
+                                        <td name="account_invoice_line_name">
+                                            <span t-field="line.city_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.start_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.end_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.campaign_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.paid_faces"
+                                            />
+                                        </td>
+                                        <!--td>
+                                            <t t-if="line.categ_id.name == 'Rent' ">
+                                                <t t-set="rent_total" t-value="rent_total+line.price_subtotal"/>
+                                                <span t-esc="line.price_subtotal " t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+                                        </td-->
+                                        <td>
+                                            <!--t t-if="line.categ_id.name == 'Print' ">
+                                                <t t-set="printing_total" t-value="printing_total+line.printing_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line.printing_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t-->
+                                            <t t-if="line.categ_id.name == 'Print' ">
+                                                <t t-set="printing_total" t-value="printing_total+line.price_unit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line.price_unit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+
+                                        </td>
+                                        <td>
+                                            <t t-if="line.categ_id.name == 'Print' ">
+                                                <span t-esc="line.printing_cost - (line.printing_cost*line.disc/100)"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_before_disc"
+                                                   t-value="total_before_disc+line.printing_cost - (line.printing_cost*line.disc/100)"/>
+                                            </t>
+                                            <t t-if="not line.categ_id.name == 'Print' ">
+                                                <span t-esc="line.gross_rate"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_before_disc"
+                                                   t-value="total_before_disc+line.gross_rate"/>
+                                            </t>
+
+                                        </td>
+                                        <!--td>
+                                            <t t-set="disc_total" t-value="disc_total+(line.gross_rate*(line.disc/100))"/>
+                                            <span t-esc="line.gross_rate*(line.disc/100)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td-->
+                                        <td>
+                                            <t t-set="disc_total" t-value="disc_total+(line.gross_rate-line.net_cost)"/>
+                                            <span t-esc="line.gross_rate-line.net_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="total_before_vat"
+                                               t-value="total_before_vat+line.price_subtotal"/>
+                                            <span t-esc="line.price_subtotal "
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td t-foreach="line.invoice_line_tax_ids" t-as="tax">
+                                            <t>
+                                                <span t-esc="(tax.amount/100)*line.price_subtotal"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_vat"
+                                                   t-value="total_vat+((tax.amount/100)*line.price_subtotal)"/>
+
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-set="total_after_vat" t-value="total_after_vat+line.price_total"/>
+                                            <span t-esc="line.price_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr style="color:red;">
+                                        <td >Total</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <!--td>
+
+                                            <span t-esc="rent_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td-->
+                                        <td>
+
+                                            <span t-esc="printing_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_before_disc"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="disc_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_before_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_after_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="clearfix">
+                                <div id="total" class="row">
+                                    <div t-attf-class="#{'col-7' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                        <table class="table table-sm">
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="o.discount_total+ o.amount_untaxed"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Discount</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="o.discount_total"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>الخصم</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note After Discount</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-field="o.amount_untaxed"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار بعد الخصم</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>VAT 5%</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="total_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>5% ضريبة القيمة المضافة </strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note After VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-field="o.amount_total"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار بعد الضريبة</strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div style="direction: rtl;" class="text-left">
+                                    <!--<span t-field="o.total_in_words"/>-->
+                                    <!--<span t-field="o.currency_id.symbol"/>-->
+                                    <span t-field="o.comment"/>
+                                </div>
+
+                            </div>
+
+                            <br/>
+                            <div class="clearfix"/>
+                            <div style="border-style: solid;">
+                                <center>
+                                    <div> :
+                                        <span style="color:red">
+                                            
+                                        </span>
+                                    </div>
+                                    <div>نشكركم على إختيار وسائلنا للنشر حملاتكم الإعلانية  :
+                                                                                
+                                    </div>
+                                    <div>
+                                       
+                                       
+                                    </div>
+                                    <div></div>
+                                </center>
+                            </div>
+                            <div class="row">
+                                <center class="col-sm-12">
+                                    هذه الوثيقة مستخرجة من النظام الالي ولا تحتاج الي توقيع
+                                    <br/>
+                                    This document is extracted from the automated system and does not
+                                    require signature
+                                    <br/>
+
+                                    Your E-mail reply to this E-mail is considered as approval without any
+                                    responsibilies from our side. E-mail signatured is accepted.
+                                </center>
+                                <br/>
+                            </div>
+                            <div class="clearfix"/>
+                            <!--<div class="row text-center">-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>PROCESSED BY</center>-->
+                                <!--</div>-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>CHECKED BY</center>-->
+                                <!--</div>-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>APPROVED BY</center>-->
+                                <!--</div>-->
+                                <!--<br/>-->
+                                <!-- <center class="col-sm-12">
+                                    <h5>
+                                        إقرار باعتماد التوقيع الإلكترونى
+                                    </h5>
+                                </center> -->
+
+                            <!--</div>-->
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+            <!--            </t>-->
+        </template>
+
+	<template id="zaki_credit_note_template_15">
+            <t t-call="web.html_container">
+                <!--                <t t-call="web.external_layout">-->
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <!--                    <t t-call="web.external_layout">-->
+			<div class="footer">
+                        <div class="row" style="font-size:8;">
+                           <div class="text-center">
+                             Page <span class="page"/> of <span class="topage"/>
+                          </div>
+                          </div>
+                       </div>
+                        <div class="page" style="font-size:15px">
+                            <center>
+                                <!--<h3>  شركة ذكى للدعاية والإعلان - طلب طباعة</h3>-->
+
+                                                               <h4>Credit Note / اشعار دائن</h4>
+                            </center>
+
+                            <table id="tablePreview" cellpadding="50" class="table table-bordered">
+                                <!--Table head-->
+                                <thead>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th colspan="4">
+                                            <span t-field="o.partner_id.name"/>
+                                        </th>
+                                        <th class="text-right">إسم العميل</th>
+                                        <th>Credit Note No</th>
+                                        <th colspan="2">
+                                            <span t-field="o.number"/>
+                                        </th>
+                                        <th class="text-right">رقم الاشعار </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th>Customer Name</th>
+                                        <th colspan="4" class="text-right">
+                                            <span t-field="o.partner_id.name"/>
+                                        </th>
+                                        <th>Credit Note DATE</th>
+                                        <th colspan="2">
+                                            <span t-field="o.date_invoice"/>
+                                        </th>
+                                        <th class="text-right">تاريخ الاشعار</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th>
+                                            <span t-field="o.partner_id.vat"/>
+                                        </th>
+                                        <th class="text-right" colspan="4">الرقم التعريفى لضريبة القيمة المضافة
+                                            للعميل
+                                        </th>
+                                        <th>P.O.NO.</th>
+                                        <th colspan="2">
+                                            <span t-field="o.origin"/>
+                                        </th>
+                                        <th class="text-right">رقم التعميد</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th class="text-right" colspan="2">المملكة العربية السعودية</th>
+                                        <th class="text-right" colspan="3"><span t-field="o.partner_id.city"/> , <span t-field="o.partner_id.street"/> : العنوان</th>
+                                        <th>P.O.DATE</th>
+                                        <th colspan="2">
+                                            <span t-field="o.date_due"/>
+                                        </th>
+                                        <th class="text-right">تاريخ التعميد</th>
+                                    </tr>
+                                    <tr style="background-color: #C0C0C0">
+                                        <th colspan="2">
+                                            <span t-field="o.ref_number"/>
+                                        </th>
+                                        <th class="text-right" colspan="3">Ref Number الرقم المرجعى</th>
+
+                                        <!--  <th style="visibility: hidden;" class="text-right" colspan="5"></th>-->
+                                        <!--  <th style="visibility: hidden;" class="text-right" colspan="5"></th>-->
+                                        <th>VAT No.</th>
+                                        <th colspan="2">310214674700003</th>
+                                        <th class="text-right">الرقم الضريبى</th>
+                                    </tr>
+                                    <tr style="visibility: hidden;">
+                                        <!-- Please Do not remove this tr,  -->
+                                        <th scope="row">3</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>@</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tbody>
+                                <!--Table body-->
+                            </table>
+
+                            <table style="direction: rtl;" cellpadding="50" class="table table-bordered"
+                                   name="invoice_line_table">
+                                <thead>
+                                    <tr style="background-color: #C0C0C0">
+                                        <t t-set="colspan" t-value="6"/>
+                                        <th>
+                                            <span>City المدينة</span>
+                                        </th>
+                                        <th>
+                                            <span>Network الشبكة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign Start بداية الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign End نهابة الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>Campaign الحملة</span>
+                                        </th>
+                                        <th>
+                                            <span>عدد الأوجه No Faces</span>
+                                        </th>
+                                        <!--th>
+                                            <span>تكلفة الإيجار Rent Cost</span>
+                                        </th-->
+                                        <th>
+                                            <span>تكلفة الطابعة Printing Cost</span>
+                                        </th>
+                                        <!--th>
+                                            <span>الإجمالى قبل الخصم Total Before Discount</span>
+                                        </th-->
+                                        <th>
+                                            <span>تكلفة الإيجار Rent Cost</span>
+                                        </th>
+                                        <th>
+                                            <span>الخصم Discount</span>
+                                        </th>
+                                        <th>
+                                            <span>الإجمالى قبل الضريبة Total Before VAT</span>
+                                        </th>
+                                        <th>
+                                            <span>الضريبة VAT 15%</span>
+                                        </th>
+                                        <th>
+                                            <span>الإجمالى بعد الضريبة Total After VAT</span>
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <t t-set="rent_total" t-value="0"/>
+                                    <t t-set="printing_total" t-value="0"/>
+                                    <t t-set="rent_total" t-value="0"/>
+                                    <t t-set="disc_total" t-value="0"/>
+                                    <t t-set="total_before_vat" t-value="0"/>
+                                    <t t-set="total_before_disc" t-value="0"/>
+                                    <t t-set="total_vat" t-value="0"/>
+                                    <t t-set="total_after_vat" t-value="0"/>
+
+                                    <tr t-foreach="o.invoice_line_ids" t-as="line">
+
+                                        <td name="account_invoice_line_name">
+                                            <span t-field="line.city_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.start_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.end_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.campaign_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.paid_faces"
+                                            />
+                                        </td>
+                                        <!--td>
+                                            <t t-if="line.categ_id.name == 'Rent' ">
+                                                <t t-set="rent_total" t-value="rent_total+line.price_subtotal"/>
+                                                <span t-esc="line.price_subtotal " t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+                                        </td-->
+                                        <td>
+                                            <!--t t-if="line.categ_id.name == 'Print' ">
+                                                <t t-set="printing_total" t-value="printing_total+line.printing_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line.printing_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t-->
+                                            <t t-if="line.categ_id.name == 'Print' ">
+                                                <t t-set="printing_total" t-value="printing_total+line.price_unit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                <span t-esc="line.price_unit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+
+                                        </td>
+                                        <td>
+                                            <t t-if="line.categ_id.name == 'Print' ">
+                                                <span t-esc="line.printing_cost - (line.printing_cost*line.disc/100)"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_before_disc"
+                                                   t-value="total_before_disc+line.printing_cost - (line.printing_cost*line.disc/100)"/>
+                                            </t>
+                                            <t t-if="not line.categ_id.name == 'Print' ">
+                                                <span t-esc="line.gross_rate"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_before_disc"
+                                                   t-value="total_before_disc+line.gross_rate"/>
+                                            </t>
+
+                                        </td>
+                                        <!--td>
+                                            <t t-set="disc_total" t-value="disc_total+(line.gross_rate*(line.disc/100))"/>
+                                            <span t-esc="line.gross_rate*(line.disc/100)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td-->
+                                        <td>
+                                            <t t-set="disc_total" t-value="disc_total+(line.gross_rate-line.net_cost)"/>
+                                            <span t-esc="line.gross_rate-line.net_cost" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="total_before_vat"
+                                               t-value="total_before_vat+line.price_subtotal"/>
+                                            <span t-esc="line.price_subtotal "
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td t-foreach="line.invoice_line_tax_ids" t-as="tax">
+                                            <t>
+                                                <span t-esc="(tax.amount/100)*line.price_subtotal"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                />
+                                                <t t-set="total_vat"
+                                                   t-value="total_vat+((tax.amount/100)*line.price_subtotal)"/>
+
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-set="total_after_vat" t-value="total_after_vat+line.price_total"/>
+                                            <span t-esc="line.price_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr style="color:red;">
+                                        <td >Total</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <!--td>
+
+                                            <span t-esc="rent_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td-->
+                                        <td>
+
+                                            <span t-esc="printing_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_before_disc"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="disc_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_before_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                        <td>
+
+                                            <span t-esc="total_after_vat"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="clearfix">
+                                <div id="total" class="row">
+                                    <div t-attf-class="#{'col-7' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                        <table class="table table-sm">
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="o.discount_total+ o.amount_untaxed"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Discount</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="o.discount_total"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>الخصم</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note After Discount</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-field="o.amount_untaxed"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار بعد الخصم</strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>VAT 15%</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-esc="total_vat"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>15% ضريبة القيمة المضافة </strong>
+                                                </td>
+                                            </tr>
+                                            <tr style="">
+                                                <td>
+                                                    <strong>Total Credit Note After VAT</strong>
+                                                </td>
+                                                <td class="text-left">
+
+                                                    <span t-field="o.amount_total"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"
+                                                    />
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <strong>إجمالى الاشعار بعد الضريبة</strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div style="direction: rtl;" class="text-left">
+                                    <!--<span t-field="o.total_in_words"/>-->
+                                    <!--<span t-field="o.currency_id.symbol"/>-->
+                                    <span t-field="o.comment"/>
+                                </div>
+
+                            </div>
+
+                            <br/>
+                            <div class="clearfix"/>
+                            <div style="border-style: solid;">
+                                <center>
+                                    <div> :
+                                        <span style="color:red">
+                                            
+                                        </span>
+                                    </div>
+                                    <div>نشكركم على إختيار وسائلنا للنشر حملاتكم الإعلانية  :
+                                                                                
+                                    </div>
+                                    <div>
+                                       
+                                       
+                                    </div>
+                                    <div></div>
+                                </center>
+                            </div>
+                            <div class="row">
+                                <center class="col-sm-12">
+                                    هذه الوثيقة مستخرجة من النظام الالي ولا تحتاج الي توقيع
+                                    <br/>
+                                    This document is extracted from the automated system and does not
+                                    require signature
+                                    <br/>
+
+                                    Your E-mail reply to this E-mail is considered as approval without any
+                                    responsibilies from our side. E-mail signatured is accepted.
+                                </center>
+                                <br/>
+                            </div>
+                            <div class="clearfix"/>
+                            <!--<div class="row text-center">-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>PROCESSED BY</center>-->
+                                <!--</div>-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>CHECKED BY</center>-->
+                                <!--</div>-->
+                                <!--<div style="width:33%">-->
+                                    <!--<p>________________________</p>-->
+                                    <!--<center>APPROVED BY</center>-->
+                                <!--</div>-->
+                                <!--<br/>-->
+                                <!-- <center class="col-sm-12">
+                                    <h5>
+                                        إقرار باعتماد التوقيع الإلكترونى
+                                    </h5>
+                                </center> -->
+
+                            <!--</div>-->
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+            <!--            </t>-->
+        </template>
+
+        <report id="zaki_credit_note_report"
+                model="account.invoice"
+                report_type="qweb-pdf"
+                string="Zaki Credit Note 5%"
+                menu="True"
+                name="zaki_layout_design.zaki_credit_note_template"
+                file="zaki_layout_design.zaki_credit_note_template"
+        />
+
+	<report id="zaki_credit_note_report_15"
+                model="account.invoice"
+                report_type="qweb-pdf"
+                string="Zaki Credit Note 15%"
+                menu="True"
+                name="zaki_layout_design.zaki_credit_note_template_15"
+                file="zaki_layout_design.zaki_credit_note_template_15"
+        />
+
+
+        <!--report_type="qweb-html"-->
+    </data>
+</odoo>

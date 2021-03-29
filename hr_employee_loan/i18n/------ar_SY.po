@@ -1,0 +1,527 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_employee_loan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-30 11:11+0000\n"
+"PO-Revision-Date: 2018-07-30 11:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "(update)"
+msgstr "(تحديث)"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Amount :</strong>"
+msgstr "<strong>القيمة :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Date :</strong>"
+msgstr "<strong>التاريخ :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Deducted Amount Monthly :</strong>"
+msgstr "<strong>مبلغ الخصم الشهري :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Department :</strong>"
+msgstr "<strong>القسم :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Employee :</strong>"
+msgstr "<strong>الموظف :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Loan End Date :</strong>"
+msgstr "<strong>تاريخ نهاية السلفة :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Payment Method :</strong>"
+msgstr "<strong>طريقة الدفع :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Reason :</strong>"
+msgstr "<strong>السبب :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Remaining Balance</strong>"
+msgstr "<strong>المبلغ المتبقي</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Start Date of Payment :</strong>"
+msgstr "<strong>تاريخ بداية السداد :</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<strong>Total Amount</strong>"
+msgstr "<strong>المبلغ الاجمالي</strong>"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "<u>\n"
+"                                                    EMPLOYEE  LOAN\n"
+"                                                </u>"
+msgstr "<u>\n"
+"                                                    قروض الموظفين\n"
+"                                                </u>"
+
+#. module: hr_employee_loan
+#: model:ir.model,name:hr_employee_loan.model_account_move
+msgid "Account Entry"
+msgstr "قيد الحساب"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Account Move"
+msgstr "قيد يومية"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "Amount"
+msgstr "القيمة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,help:hr_employee_loan.field_loan_payments_analytic_account_id
+msgid "Analytic account for journal entry"
+msgstr "الحساب التحليلي لقيد اليومية"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Approve"
+msgstr "موافق"
+
+#. module: hr_employee_loan
+#: selection:employee.loan,state:0
+msgid "Approved"
+msgstr "موافقة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Approved Status"
+msgstr "Approved Status"
+
+#. module: hr_employee_loan
+#: selection:employee.loan,state:0
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Canceled Status"
+msgstr "الملغاء"
+
+#. module: hr_employee_loan
+#: model:ir.actions.act_window,help:hr_employee_loan.action_hr_employee_loan
+msgid "Click here to create new Loans."
+msgstr "Click here to create new Loans."
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_create_uid
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_create_uid
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_create_date
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_create_date
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_credit_account_id
+msgid "Credit Account"
+msgstr "حساب الدائن"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,help:hr_employee_loan.field_loan_payments_credit_account_id
+msgid "Credit account for journal entry"
+msgstr "حساب الدائن لقيد اليومية"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_start_date
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Day"
+msgstr "اليوم"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_debit_account_id
+msgid "Debit Account"
+msgstr "حساب المدين"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,help:hr_employee_loan.field_loan_payments_debit_account_id
+msgid "Debit account for journal entry"
+msgstr "حساب المدين لقيد اليومية"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_deduct_amount
+msgid "Deduct Amount Monthly"
+msgstr "مبلغ الخصم الشهري"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_total_paid_amount
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "Deducted Amount"
+msgstr "المبلغ المسدد"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_department_id
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Department"
+msgstr "القسم"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_display_name
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_display_name
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: hr_employee_loan
+#: selection:employee.loan,state:0
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Draft Status"
+msgstr "المسودات"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_employee_loan
+#: model:ir.actions.act_window,name:hr_employee_loan.action_hr_employee_loan
+#: model:ir.ui.menu,name:hr_employee_loan.hr_menu_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_tree
+msgid "Employee Loan"
+msgstr "قروض الموظفين"
+
+#. module: hr_employee_loan
+#: model:ir.actions.act_window,name:hr_employee_loan.action_employee_loan_report_tree_view
+#: model:ir.ui.menu,name:hr_employee_loan.employee_loan_report_menu
+#: model:ir.ui.view,arch_db:hr_employee_loan.employee_loan_report_tree_view
+msgid "Loans Report"
+msgstr "تقرير سلف الموظفين"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Employee Name"
+msgstr "اسم الموظف"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_entry_count
+msgid "Entry Count"
+msgstr "Entry Count"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Group By..."
+msgstr "تجميع حسب ..."
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_id
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_id
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Installments"
+msgstr "أقساط"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.employee_loan_report_tree_view
+msgid "Loan Date"
+msgstr "تاريخ السلفة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.employee_loan_report_tree_view
+msgid "Loan Amount"
+msgstr "مبلغ السلفة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.employee_loan_report_tree_view
+msgid "Amount Deducted"
+msgstr "المبلغ المسدد"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.employee_loan_report_tree_view
+msgid "Remaining Balance"
+msgstr "المبلغ المتبقي"
+
+#. module: hr_employee_loan
+#: code:addons/hr_employee_loan/models/employee_loan.py:231
+#, python-format
+msgid "Inverse: "
+msgstr "Inverse: "
+
+#. module: hr_employee_loan
+#: code:addons/hr_employee_loan/models/employee_loan.py:144
+#: code:addons/hr_employee_loan/models/employee_loan.py:146
+#: code:addons/hr_employee_loan/models/employee_loan.py:148
+#: code:addons/hr_employee_loan/models/employee_loan.py:291
+#, python-format
+msgid "Warning!"
+msgstr "تحذير"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_job_id
+msgid "Job Position"
+msgstr "المناصب الوظيفية"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_journal_id
+msgid "Journal"
+msgstr "يومية"
+
+#. module: hr_employee_loan
+#: model:ir.actions.act_window,name:hr_employee_loan.act_hr_loan_2_account_move
+msgid "Journal Entries"
+msgstr "قيود اليومية"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,help:hr_employee_loan.field_loan_payments_journal_id
+msgid "Journal for journal entry"
+msgstr "اليومية لقيد اليومية"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan___last_update
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line___last_update
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_write_uid
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_write_uid
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_write_date
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_write_date
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_amount
+msgid "Loan Amount"
+msgstr "مبلغ السلفة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_loan_end_date
+msgid "Loan End Date"
+msgstr "تاريخ نهاية السلفة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_loan_line_ids
+msgid "Loan Line"
+msgstr "Loan Line"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_name
+msgid "Loan Name"
+msgstr "Loan Name"
+
+#. module: hr_employee_loan
+#: model:ir.ui.menu,name:hr_employee_loan.menu_hr_loan_payments
+msgid "Loan Payments"
+msgstr "قواعد القروض"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_loan_id
+msgid "Loan Ref."
+msgstr "Loan Ref."
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+#: model:res.groups,name:hr_employee_loan.group_loan_reschedule_access
+msgid "Loan Reschedule"
+msgstr "إعادة جدولة السلفة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.loan_payments_form_view
+#: model:ir.ui.view,arch_db:hr_employee_loan.loan_payments_tree_view
+msgid "Loan Rules"
+msgstr "Loan Rules"
+
+#. module: hr_employee_loan
+#: model:ir.actions.act_window,name:hr_employee_loan.action_loan_payments_tree_view
+msgid "Loans Rules"
+msgstr "قواعد القروض"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_loan_payments_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_paid
+msgid "Paid"
+msgstr "المدفوع"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_amount
+msgid "Paid Amount"
+msgstr "القيمة"
+
+#. module: hr_employee_loan
+#: model:ir.model,name:hr_employee_loan.model_hr_payslip
+msgid "Pay Slip"
+msgstr "ظرف المرتب"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_line_discount_date
+msgid "Payment Date"
+msgstr "تاريخ السداد"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_payment_method
+msgid "Payment Methods"
+msgstr "طريقة الدفع"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,help:hr_employee_loan.field_loan_payments_name
+msgid "Payment name"
+msgstr "اسم طريقه الدفع"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.report_loan_report_print
+msgid "Payments for Loan"
+msgstr "الدفعات المستحقة للقرض"
+
+#. module: hr_employee_loan
+#: model:ir.actions.report.xml,name:hr_employee_loan.report_loan_print
+msgid "Print Loan"
+msgstr "القروض"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_reason
+msgid "Reason"
+msgstr "السبب"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Recompute Balance"
+msgstr "Recompute Balance"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_balance_amount
+msgid "Remaining Balance"
+msgstr "المبلغ المتبقي"
+
+#. module: hr_employee_loan
+#: selection:employee.loan,state:0
+msgid "Reschedule"
+msgstr "إعادة الجدولة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Reschedule Done"
+msgstr "تمت اعادة الجدولة"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Schedule Loan"
+msgstr "Schedule Loan"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Search"
+msgstr "بحث"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Set to Draft"
+msgstr "تعيين كمسودة"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_payment_start_date
+msgid "Start Date of Payment"
+msgstr "تاريخ بداية السداد"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_state
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_search
+msgid "Status"
+msgstr "الحاله "
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "The period of payment of the loan"
+msgstr "The period of payment of the loan"
+
+#. module: hr_employee_loan
+#: model:res.groups,comment:hr_employee_loan.group_loan_reschedule_access
+msgid "The user will be able to Reschedule the loan"
+msgstr "The user will be able to Reschedule the loan"
+
+#. module: hr_employee_loan
+#: model:ir.ui.view,arch_db:hr_employee_loan.hr_employee_loan_view_form
+msgid "Total"
+msgstr "الإجمالي "
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_employee_loan_total_amount
+msgid "Total Amount"
+msgstr "إجمالي المبلغ"
+
+#. module: hr_employee_loan
+#: model:ir.model.fields,field_description:hr_employee_loan.field_account_move_vouch_id
+msgid "Vouch"
+msgstr "Vouch"
+
+#. module: hr_employee_loan
+#: model:ir.model,name:hr_employee_loan.model_employee_loan
+msgid "employee loan"
+msgstr "قروض الموظفين"
+
+#. module: hr_employee_loan
+#: model:ir.model,name:hr_employee_loan.model_employee_loan_line
+msgid "employee loan line"
+msgstr "employee loan line"
+
+#. module: hr_employee_loan
+#: model:ir.model,name:hr_employee_loan.model_loan_payments
+msgid "loan.payments"
+msgstr "loan.payments"
+

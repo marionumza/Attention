@@ -1,0 +1,404 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* zaki_retail
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-14 11:36+0000\n"
+"PO-Revision-Date: 2020-12-14 11:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__asset_category
+msgid "Asset Category"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__available
+msgid "Available"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__campaign_name
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__campaign_name
+msgid "Campaign Name"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__campaign_period
+msgid "Campaign Period"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__categ_id
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__categ_id
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__categ_id
+msgid "Category"
+msgstr "الفئة"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__city_id
+#: model:ir.model.fields,field_description:zaki_retail.field_account_move_line__city_id
+#: model:ir.model.fields,field_description:zaki_retail.field_product_pricelist__city_id
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__city_id
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__city_id
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__city_id
+msgid "City"
+msgstr "المدينة"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_hr_employee__code
+msgid "Code"
+msgstr "الكود"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: zaki_retail
+#: model_terms:ir.ui.view,arch_db:zaki_retail.zaki_retail_purchase_inherit_form
+msgid "Customer Name"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__analytic_ids
+#: model:ir.model.fields,field_description:zaki_retail.field_account_move_line__analytic_ids
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__account_analytic_id
+msgid "Dimension"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__disc
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__disc
+msgid "Discount %"
+msgstr "الخصم %"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_hr_employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__end_date
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__end_date
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__end_date
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: zaki_retail
+#: model_terms:ir.ui.view,arch_db:zaki_retail.csutom_product_inherit_form
+msgid "Faces No."
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__face_uses
+msgid "Fees in use"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__free_faces
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__free_faces
+msgid "Free Faces"
+msgstr "الاوجه المجانيه"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__free_weeks
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__free_weeks
+msgid "Free Weeks"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__gross_rate
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__gross_rate
+msgid "Gross Rate"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_account_invoice
+msgid "Invoice"
+msgstr "فاتورة"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "بند الفاتورة"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_move__inv_seq_number
+msgid "Invoice Number"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_account_move
+msgid "Journal Entries"
+msgstr "قيود اليومية"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر يومية"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: zaki_retail
+#: model_terms:ir.ui.view,arch_db:zaki_retail.zaki_view_inherit_vendor_bill_form
+msgid "Ledger"
+msgstr ""
+
+#. module: zaki_retail
+#: model_terms:ir.ui.view,arch_db:zaki_retail.view_inherit_zaki_retail_customer_account_form
+#: model_terms:ir.ui.view,arch_db:zaki_retail.zaki_retail_purchase_inherit_form
+#: model_terms:ir.ui.view,arch_db:zaki_retail.zaki_retail_sale_inherit_form
+#: model_terms:ir.ui.view,arch_db:zaki_retail.zaki_view_inherit_vendor_bill_form
+msgid "Media"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__net_cost
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__net_cost
+msgid "Net cost"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__number
+msgid "Number"
+msgstr "الرقم"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__number2
+msgid "Number2"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__paid_faces
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__paid_faces
+msgid "Paid Faces"
+msgstr "الاوجه المدفوعه"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__paid_weeks
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__paid_weeks
+msgid "Paid Weeks"
+msgstr "الاوجه المدفوعه"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__prc_unit
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__prc_unit
+msgid "Price Unit"
+msgstr "سعر الوحده"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_product_pricelist
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__pricelist_id
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__pricelist_id
+msgid "Pricelist"
+msgstr "قائمه الأسعار"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_product_pricelist_item
+msgid "Pricelist Item"
+msgstr "عنصر قائمة الأسعار"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_product__print_cost_amount
+#: model:ir.model.fields,field_description:zaki_retail.field_product_template__print_cost_amount
+msgid "Print Cost"
+msgstr "سعر الطباعه"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__print_cost_amount
+msgid "Print Cost Amount"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_pricelist_item__printing_cost
+msgid "Printing Cost"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__printing_cost
+msgid "Printing Sale"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__printing_cost
+#: model:res.groups,name:zaki_retail.group_printing_cost
+msgid "Printing cost"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order__is_print
+msgid "Printing cost?"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_purchase_order
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "بند طلب الشراء"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__ref_number
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order__ref_number
+msgid "Ref Number"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__ref
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__region_id
+#: model:ir.model.fields,field_description:zaki_retail.field_product_product__region_ids
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__region_id
+#: model:ir.model.fields,field_description:zaki_retail.field_product_template__region_ids
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__region_id
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__region_id
+#: model_terms:ir.ui.view,arch_db:zaki_retail.csutom_product_inherit_form
+msgid "Region"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_sale_order
+msgid "Sale Order"
+msgstr "أمر البيع"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order__sale_id
+msgid "Sale order"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "بند أمر البيع"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__seq_number
+msgid "Seq/Number"
+msgstr ""
+
+#. module: zaki_retail
+#: model:res.groups,comment:zaki_retail.group_printing_cost
+msgid "Show / Hide Printing Cost "
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_pricelist_item__value_ids
+msgid "Size"
+msgstr "الحجم"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__value_ids
+msgid "Size (Frequency)"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__discount_total
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order__discount_total
+msgid "Total Discount"
+msgstr "مجموع الخصم"
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_product_region__total_fees
+msgid "Total Fees No."
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order__total_in_words
+msgid "Total In Words"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__tot_discount
+msgid "Total discount"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice__is_assets
+msgid "assets"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__campaign
+msgid "campaign"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__header_is_print
+msgid "header printing"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__is_print
+msgid "print?"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model,name:zaki_retail.model_product_region
+msgid "product.region"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__is_rent
+msgid "rent?"
+msgstr ""
+
+#. module: zaki_retail
+#: model:ir.model.fields,field_description:zaki_retail.field_account_invoice_line__start_date
+#: model:ir.model.fields,field_description:zaki_retail.field_purchase_order_line__start_date
+#: model:ir.model.fields,field_description:zaki_retail.field_sale_order_line__start_date
+msgid "start Date "
+msgstr ""
+
